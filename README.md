@@ -9,7 +9,7 @@ At present only followers for a user can be searched for
 
 ## Demo
 
-Online demo coming soon.
+Demo available at http://bathub.dsyph3r.com/
 
 ## Installion
 
