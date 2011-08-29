@@ -1,0 +1,18 @@
+html, body { background: #555; }
+body { width: 100%; padding-top: 60px; }
+
+a { color: #fff; }
+a:hover { text-decoration: underline; color: #fff; }
+
+h2 { color: #fff; }
+
+.tabs li.active a { background-color: #444; border-color: #fff; color: #fff; }
+.pagination ul li a:hover, .pagination ul li.active a { background-color: #444; color: #fff; }
+
+.loader { margin: 100px auto 0 auto; display: none; }
+.result-count { display: none }
+
+.user { border-radius: 5px; background: #444; min-height: 120px; margin-bottom: 20px; }
+.user .inner { margin: 5px; }
+.user h2 { font-size: 12px;  vertical-align: top; text-align: center; line-height: 14px; }
+.user .avatar { width: 90px; }
