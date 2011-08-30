@@ -2,6 +2,8 @@ class Bathub extends Batman.App
     @global yes
   
     @controller 'app'
+    @model 'user'
+    
     @root 'app#index'
     @query: ''
     
@@ -11,7 +13,3 @@ class Bathub extends Batman.App
     @loading: no
     @searched: no
     
-class Bathub.User extends Batman.Model
-    @global 'yes'
-    
-    @persist Batman.LocalStorage
