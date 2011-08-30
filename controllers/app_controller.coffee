@@ -5,7 +5,7 @@ class Bathub.AppController extends Batman.Controller
     submitSearch: =>
         @redirect 'user'
         
-    user: (query) ->
+    user: (query) ->            
         Bathub.set 'searched', no
         Bathub.set 'loading', yes
 
@@ -26,15 +26,7 @@ class Bathub.AppController extends Batman.Controller
         
         $.ajax 'https://api.github.com/users/'+ encodeURI(Bathub.query) + '/followers?page' + Bathub.currentPage + '&per_page=' + Bathub.pageSize,
             dataType: 'jsonp'
-            success: (data) ->
-                Bathub.set 'loading', no
-                Bathub.set 'searched', yes
-                
-                Bathub.User.all.forEach (u) -> u.destroy()
-                for obj in data.data
-                    user = new Bathub.User obj
-                    user.save (error, record) ->
-                        throw error if error
+            success: @processUsersSuccess
                     
     following: (query) =>
         Bathub.set 'searched', no
@@ -42,13 +34,14 @@ class Bathub.AppController extends Batman.Controller
 
         $.ajax 'https://api.github.com/users/'+ encodeURI(Bathub.query) + '/following?page' + Bathub.currentPage + '&per_page=' + Bathub.pageSize,
             dataType: 'jsonp'
-            success: (data) ->
-                Bathub.set 'loading', no
-                Bathub.set 'searched', yes
-                
-                Bathub.User.all.forEach (u) -> u.destroy()
-                for obj in data.data
-                    user = new Bathub.User obj
-                    user.save (error, record) ->
-                        throw error if error
+            success: @processUsersSuccess
+            
+    processUsersSuccess: (data) =>
+        Bathub.set 'loading', no
+        Bathub.set 'searched', yes
         
+        Bathub.User.all.forEach (u) -> u.destroy()
+        for obj in data.data
+            user = new Bathub.User obj
+            user.save (error, record) ->
+                throw error if error
