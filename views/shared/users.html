@@ -1,0 +1,15 @@
+<div data-showif="Bathub.searched" class="result-count">
+
+    <div class="alert-message success">
+        <p data-bind="Bathub.User.all.length | prepend 'Showing ' | append ' users. '"></p>
+    </div>
+
+    <div class="row show-grid">
+        <div class="user span2 columns" data-foreach-user="Bathub.User.all">
+            <div class="inner">
+                <img class="avatar" data-bind-src="user.avatar_url" />
+                <h2><a data-bind="user.login" data-bind-href="user.login | prepend 'https://github.com/'"></a></h2>
+            </div>
+        </div>
+    </div>
+</div>
