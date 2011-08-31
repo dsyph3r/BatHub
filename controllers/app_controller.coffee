@@ -3,6 +3,10 @@ class Bathub.AppController extends Batman.Controller
         @render false
         
     submitSearch: =>
+        search = new Bathub.Search { term: Bathub.query }
+        search.save (error, record) ->
+            throw error if error
+        
         @redirect 'user'
         
     user: (query) ->            

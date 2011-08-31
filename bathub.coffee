@@ -2,7 +2,7 @@ class Bathub extends Batman.App
     @global yes
   
     @controller 'app'
-    @model 'user'
+    @model 'user', 'search'
     
     @root 'app#index'
     
